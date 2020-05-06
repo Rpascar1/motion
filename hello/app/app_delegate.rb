@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+class AppDelegate
+  def applicationDidFinishLaunching(_notification)
+    buildMenu
+    buildWindow
+    alert = NSAlert.new
+    alert.messageText = 'Hello World!'
+    alert.runModal
+  end
+
+  def buildWindow
+    @mainWindow = NSWindow.alloc.initWithContentRect([[240, 180], [480, 360]],
+                                                     styleMask: NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask,
+                                                     backing: NSBackingStoreBuffered,
+                                                     defer: false)
+    @mainWindow.title = NSBundle.mainBundle.infoDictionary['CFBundleName']
+    @mainWindow.orderFrontRegardless
+  end
+end
